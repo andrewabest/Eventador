@@ -5,7 +5,9 @@ namespace Eventador
     [ComplexType]
     public class Money
     {
-        public Money Create(decimal amount)
+        public static Money NullInstance => Money.Create(0);
+
+        public static Money Create(decimal amount)
         {
             return new Money 
             {
