@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Eventador.Queries;
 using NUnit.Framework;
 using Shouldly;
 
@@ -28,19 +27,6 @@ namespace Eventador.Tests
             IReadRepository readRepository = new EventadorContext();
 
             (await readRepository.ExistsByIdAsync<Attendee>(attendee.Id)).ShouldBeTrue();
-        }
-    }
-
-    public class QueryScenarios
-    {
-        [Test]
-        public async Task QuerySqlDump()
-        {
-            var query = new AttendeesWithDietaryPreferencesWhoHavePaid(new EventadorContext());
-
-            var results = await query.Execute();
-
-            Assert.IsTrue(true);
         }
     }
 }

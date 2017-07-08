@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="EventScenarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BadQueryScenarios.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
