@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventador", "Eventador\Eventador.csproj", "{C67BD6E3-8B10-49F8-B897-E2242C412B8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eventador.Tests", "Eventador.Tests\Eventador.Tests.csproj", "{C0E7BE78-6BD5-42F9-BDD5-F2541105E161}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C67BD6E3-8B10-49F8-B897-E2242C412B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C67BD6E3-8B10-49F8-B897-E2242C412B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C67BD6E3-8B10-49F8-B897-E2242C412B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C67BD6E3-8B10-49F8-B897-E2242C412B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E7BE78-6BD5-42F9-BDD5-F2541105E161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E7BE78-6BD5-42F9-BDD5-F2541105E161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E7BE78-6BD5-42F9-BDD5-F2541105E161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E7BE78-6BD5-42F9-BDD5-F2541105E161}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

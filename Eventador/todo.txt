@@ -1,0 +1,10 @@
+Construct EF Queries for:
+
+List employees attending a session that is catered along with their dietary requirements
+
+List attendees grouped by hotel who have not yet paid for their accommodation, 
+
+https://stackoverflow.com/questions/19319116/include-vs-load-performance-in-entityframework
+
+Construct commands to register an attendee for an event, and to register session attendance
+
