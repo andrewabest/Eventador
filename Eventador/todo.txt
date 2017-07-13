@@ -8,3 +8,41 @@ https://stackoverflow.com/questions/19319116/include-vs-load-performance-in-enti
 
 Construct commands to register an attendee for an event, and to register session attendance
 
+// TODO: IRepository + return entity + some sort of mapper etc for step one
+
+    // Remove the queries and commands for now.
+
+    // TODO: Use that to build a multiple includes query that then maps down to some sort of viewModel
+
+    // TODO: Done, that is the 'OLD WAY'
+
+    // Now, outline the problems. Repository pattern is old, dead. Kill it.
+
+    // Our domain model has too many concerns, is becoming harder to reason about.
+
+    // Query is too greedy, but we don't want VMs creeping into our domain model!
+
+    // Mapping the domain into view models... Who has seen a mapper that takes a dependency on a repository? Hands up? Also encourages lazy queries and in-memory projection.
+
+    // All of this encourages bad practices.
+
+    // TODO: Introduce the new world.
+
+    // First, we need to kill the mapper and the "Repositories". What can we put in their place? CQRS.
+
+    // Still leaves our domain with too many concerns though, has not simplified that.
+
+    // Next, lets stop querying from our domain. What wants to consume this query anyway? Some sort of report or UI no doubt.
+
+    // Lets use something that allows us to query from the same persistence store, avoiding eventual consistency etc, but decoupling our query concerns
+    // from our persistence concerns.
+
+    // Dapper in queries
+
+    // TODO: Welcome to the new world.
+
+    // But what about dynamic SQL in code? Haven't we just gone full circle?
+
+    // TODO: Introduce Tailor, keeping some sort of safety in queries, making your codebase / schema still refactor friendly.
+
+    // Done.

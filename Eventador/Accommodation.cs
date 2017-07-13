@@ -16,6 +16,5 @@ namespace Eventador
         public int Nights { get; private set; }
 
         public Money Amount { get; private set; }
-
     }
 }
