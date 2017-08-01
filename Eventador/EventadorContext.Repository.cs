@@ -15,7 +15,7 @@ namespace Eventador
         Task<T> GetByIdAsync<T>(Guid id, params Expression<Func<T, object>>[] includes) where T : AggregateRoot;
         Task<T> FindAsync<T>(Guid id) where T : AggregateRoot;
         void Add<T>(T aggregateRoot) where T : AggregateRoot;
-        void Remove<T>(T aggregateRoot) where T : class;
+        void Remove<T>(T aggregateRoot) where T : AggregateRoot;
         Task<int> Commit();
     }
 
@@ -88,7 +88,7 @@ namespace Eventador
             Set<T>().Add(aggregateRoot);
         }
 
-        public void Remove<T>(T aggregateRoot) where T : class
+        public void Remove<T>(T aggregateRoot) where T : AggregateRoot
         {
             Set<T>().Remove(aggregateRoot);
         }

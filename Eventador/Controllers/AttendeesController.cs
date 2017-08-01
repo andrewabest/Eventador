@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Eventador.Domain;
-using Eventador.Repositories;
+using Eventador.Queries;
 
 namespace Eventador.Controllers
 {
     public class AttendeesController
     {
-        private readonly IAttendeeRepository _attendeeRepository;
+        private readonly AttendeeSessionsQuery _attendeeSessionsQuery;
 
-        public AttendeesController(IAttendeeRepository attendeeRepository)
+        public AttendeesController(AttendeeSessionsQuery attendeeSessionsQuery)
         {
-            _attendeeRepository = attendeeRepository;
+            _attendeeSessionsQuery = attendeeSessionsQuery;
         }
 
-        public Task<Attendee[]> Get(Guid eventId)
+        public Task<AttendeeSessionsQueryResult[]> GetWithSessions(AttendeeSessionsQueryParameters parameters)
         {
-            return _attendeeRepository.GetAttendeesWithSessions(eventId);
+            return _attendeeSessionsQuery.ExecuteAsync(parameters);
         }
     }
 }

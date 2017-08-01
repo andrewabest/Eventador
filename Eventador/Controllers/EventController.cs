@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Eventador.Commands;
 using Eventador.Domain;
-using Eventador.Repositories;
 
 namespace Eventador.Controllers
 {
     public class EventController
     {
-        private readonly IEventRepository _eventRepository;
+        private readonly RegisterForEventCommandHandler _registerForEventCommandHandler;
 
-        public EventController(IEventRepository eventRepository)
+        public EventController(RegisterForEventCommandHandler registerForEventCommandHandler)
         {
-            _eventRepository = eventRepository;
+            _registerForEventCommandHandler= registerForEventCommandHandler;
         }
 
-        public Attendee Register(Guid eventId, string firstName, string lastName)
+        public Task Register(RegisterForEventCommand registerForEventCommand)
         {
-            var @event = _eventRepository.Get(eventId);
-
-            return @event.Register(firstName, lastName);
-
-            // NOTE: Assumes transient UoW
+            return _registerForEventCommandHandler.Handle(registerForEventCommand);
         }
     }
 }

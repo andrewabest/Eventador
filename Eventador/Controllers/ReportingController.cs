@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Eventador.Domain;
-using Eventador.Repositories;
+using Eventador.Queries;
 
 namespace Eventador.Controllers
 {
     public class ReportingController
     {
-        private readonly IAttendeeRepository _attendeeRepository;
+        private readonly AttendeesWithDietaryPreferencesWhoHavePaidQuery _attendeesWithDietaryPreferencesWhoHavePaidQuery;
 
-        public ReportingController(IAttendeeRepository attendeeRepository)
+        public ReportingController(AttendeesWithDietaryPreferencesWhoHavePaidQuery attendeesWithDietaryPreferencesWhoHavePaidQuery)
         {
-            _attendeeRepository = attendeeRepository;
+            _attendeesWithDietaryPreferencesWhoHavePaidQuery = attendeesWithDietaryPreferencesWhoHavePaidQuery;
         }
 
-        public Task<Attendee[]> GetCateringReport(Guid eventId)
+        public Task<AttendeesWithDietaryPreferencesWhoHavePaidResult[]> GetCateringReport(Guid eventId)
         {
-            return _attendeeRepository.GetAttendeesWithDietaryPreferencesWhoHavePaid(eventId);
+            return _attendeesWithDietaryPreferencesWhoHavePaidQuery.ExecuteAsync();
         }
     }
 }

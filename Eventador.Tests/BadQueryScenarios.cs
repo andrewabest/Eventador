@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Eventador.Repositories;
+using Eventador.Queries;
 using NUnit.Framework;
 
 namespace Eventador.Tests
@@ -10,9 +10,9 @@ namespace Eventador.Tests
         [Test]
         public async Task QuerySqlDump()
         {
-            var repository = new AttendeeRepository(new EventadorContext());
+            var query = new AttendeesWithDietaryPreferencesWhoHavePaidQuery(new EventadorContext());
 
-            var results = await repository.GetAttendeesWithDietaryPreferencesWhoHavePaid(Guid.NewGuid());
+            var results = await query.ExecuteAsync();
 
             Assert.IsTrue(true);
         }
