@@ -61,17 +61,6 @@ namespace Eventador.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Travels",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Attendee_Id = c.Guid(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Attendees", t => t.Attendee_Id)
-                .Index(t => t.Attendee_Id);
-            
-            CreateTable(
                 "dbo.SessionAttendees",
                 c => new
                     {
@@ -88,18 +77,15 @@ namespace Eventador.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Travels", "Attendee_Id", "dbo.Attendees");
             DropForeignKey("dbo.SessionAttendees", "Attendee_Id", "dbo.Attendees");
             DropForeignKey("dbo.SessionAttendees", "Session_Id", "dbo.Sessions");
             DropForeignKey("dbo.Attendees", "Event_Id", "dbo.Events");
             DropForeignKey("dbo.Accommodations", "Attendee_Id", "dbo.Attendees");
             DropIndex("dbo.SessionAttendees", new[] { "Attendee_Id" });
             DropIndex("dbo.SessionAttendees", new[] { "Session_Id" });
-            DropIndex("dbo.Travels", new[] { "Attendee_Id" });
             DropIndex("dbo.Attendees", new[] { "Event_Id" });
             DropIndex("dbo.Accommodations", new[] { "Attendee_Id" });
             DropTable("dbo.SessionAttendees");
-            DropTable("dbo.Travels");
             DropTable("dbo.Sessions");
             DropTable("dbo.Events");
             DropTable("dbo.Attendees");

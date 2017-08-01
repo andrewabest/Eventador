@@ -36,8 +36,6 @@ namespace Eventador
 
         public ICollection<Accommodation> Accommodation { get; } = new List<Accommodation>();
 
-        public ICollection<Travel> Travel { get; } = new List<Travel>();
-
         public void SpecifyDietaryRequirements(string dietaryRequirements)
         {
             HasDietaryRequirements = true;

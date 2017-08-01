@@ -15,6 +15,5 @@ namespace Eventador
         public DbSet<Attendee> Attendees { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Accommodation> Accommodations { get; set; }
-        public DbSet<Travel> Travels { get; set; }
     }
 }

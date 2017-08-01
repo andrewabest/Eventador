@@ -53,9 +53,9 @@
     <Compile Include="Event.cs" />
     <Compile Include="EventadorContext.cs" />
     <Compile Include="EventadorContext.Repository.cs" />
-    <Compile Include="Migrations\201707081059546_InitialMigration.cs" />
-    <Compile Include="Migrations\201707081059546_InitialMigration.Designer.cs">
-      <DependentUpon>201707081059546_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201708010038267_InitialMigration.cs" />
+    <Compile Include="Migrations\201708010038267_InitialMigration.Designer.cs">
+      <DependentUpon>201708010038267_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Money.cs" />
@@ -65,7 +65,6 @@
     <Compile Include="Repositories\EntityFrameworkRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Session.cs" />
-    <Compile Include="Travel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="todo.txt" />
@@ -76,10 +75,9 @@
     <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707081059546_InitialMigration.resx">
-      <DependentUpon>201707081059546_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708010038267_InitialMigration.resx">
+      <DependentUpon>201708010038267_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
