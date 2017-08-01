@@ -16,7 +16,7 @@ namespace Eventador.Controllers
 
         public Task<AttendeeSessionsQueryResult[]> GetWithSessions(AttendeeSessionsQueryParameters parameters)
         {
-            return _attendeeSessionsQuery.ExecuteAsync(parameters);
+            return _attendeeSessionsQuery.Execute(parameters);
         }
     }
 }

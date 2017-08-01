@@ -23,13 +23,9 @@ namespace Eventador.Domain
 
         public string Location { get; private set; }
 
-        public ICollection<Attendee> Attendees { get; } = new List<Attendee>();
-
         public Attendee Register(string firstName, string lastName)
         {
             var attendee = Attendee.Create(Guid.NewGuid(), firstName, lastName, this);
-
-            Attendees.Add(attendee);
 
             return attendee;
         }

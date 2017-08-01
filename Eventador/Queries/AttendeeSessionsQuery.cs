@@ -3,48 +3,63 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Eventador.Domain;
+using Tailor;
 
 namespace Eventador.Queries
 {
-    public class AttendeeSessionsQuery : IAsyncQuery<AttendeeSessionsQueryParameters, AttendeeSessionsQueryResult[]>
+    public class AttendeeSessionsQuery : AsyncDapperQuery<AttendeeSessionsQueryParameters, AttendeeSessionsQueryResult[]>
     {
-        private readonly IReadRepository _readRepository;
+        private readonly IConnectionFactory _connectionFactory;
 
-        public AttendeeSessionsQuery(IReadRepository readRepository)
+        public AttendeeSessionsQuery(IConnectionFactory connectionFactory)
         {
-            _readRepository = readRepository;
+            _connectionFactory = connectionFactory;
         }
 
-        public Task<AttendeeSessionsQueryResult[]> ExecuteAsync(AttendeeSessionsQueryParameters parameters)
+        public override async Task<AttendeeSessionsQueryResult[]> Execute(AttendeeSessionsQueryParameters parameters)
         {
-            return _readRepository.Table<Attendee>(x => x.Event, x => x.Sessions)
-                .Where(x => x.Event.Id == parameters.EventId)
-                .Select(x => new AttendeeSessionsQueryResult
-                {
-                    Id = x.Id,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Sessions = x.Sessions.Select(s => new AttendeeSessionsQueryResult.SessionDto
-                    {
-                        Id = s.Id,
-                        Title = s.Title,
-                        Presenter = s.Presenter,
-                        StartsAt = s.StartsAt,
-                        IsCatered = s.IsCatered
-                    })
-                })
-                .ToArrayAsync();
+            using (var connection = _connectionFactory.Connection)
+            {
+                return (
+                    await connection.QueryAsync<AttendeeSessionsQueryResult, AttendeeSessionsQueryResult.SessionDto, AttendeeSessionsQueryResult>(
+                        GetSql(), 
+                        (attendee, session) => 
+                        {
+                            attendee.Sessions.Add(session);
+                            return attendee;
+                        },
+                        parameters.ToDapperParameters())).ToArray();
+            }
+        }
+
+        public override string GetSql()
+        {
+            return @"Select Attendees.Id, FirstName, LastName, Sessions.Id, Title, Presenter, StartsAt, IsCatered
+                     From Attendees 
+                        Left Outer Join SessionAttendees on Attendees.Id = SessionAttendees.Attendee_Id
+                        Left Outer Join Sessions on SessionAttendees.Session_Id = Sessions.Id
+                   ";
         }
     }
 
-    public class AttendeeSessionsQueryParameters
+    public class AttendeeSessionsQueryParameters : IQueryParameters
     {
         public Guid EventId { get; set; }
     }
 
     public class AttendeeSessionsQueryResult
     {
+        public AttendeeSessionsQueryResult()
+        {
+            Sessions = new List<SessionDto>();
+        }
+
+        public Guid Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public IList<SessionDto> Sessions { get; set; }
 
         public class SessionDto
         {
@@ -54,10 +69,5 @@ namespace Eventador.Queries
             public DateTimeOffset StartsAt { get; set; }
             public bool IsCatered { get; set; }
         }
-
-        public Guid Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public IEnumerable<SessionDto> Sessions { get; set; }
     }
 }

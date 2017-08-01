@@ -5,7 +5,7 @@ namespace Eventador.Domain
 {
     public class Session : AggregateRoot
     {
-        public static Session Create(Guid id, string title, string presenter, DateTimeOffset startsAt, TimeSpan duration)
+        public static Session Create(Guid id, string title, string presenter, DateTimeOffset startsAt, TimeSpan duration, bool isCatered)
         {
             return new Session 
             {
@@ -13,7 +13,8 @@ namespace Eventador.Domain
                 Title = title,
                 Presenter = presenter,
                 StartsAt = startsAt,
-                Duration = duration    
+                Duration = duration,
+                IsCatered = isCatered
             };
         }
 
@@ -27,6 +28,9 @@ namespace Eventador.Domain
 
         public bool IsCatered { get; private set; }
 
-        public ICollection<Attendee> Attendees { get; } = new List<Attendee>();
+        public SessionAttendee Register(Attendee attendee)
+        {
+            return SessionAttendee.Create(this, attendee);
+        }
     }
 }

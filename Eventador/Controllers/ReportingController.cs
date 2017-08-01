@@ -16,7 +16,7 @@ namespace Eventador.Controllers
 
         public Task<AttendeesWithDietaryPreferencesWhoHavePaidResult[]> GetCateringReport(Guid eventId)
         {
-            return _attendeesWithDietaryPreferencesWhoHavePaidQuery.ExecuteAsync();
+            return _attendeesWithDietaryPreferencesWhoHavePaidQuery.Execute();
         }
     }
 }

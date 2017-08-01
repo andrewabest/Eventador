@@ -14,11 +14,13 @@ namespace Eventador.Domain
             return new Attendee
             {
                 Id = id,
+                Event_Id = @event?.Id ?? throw new ArgumentNullException(nameof(@event)),
                 FirstName = firstName,
-                LastName = lastName,
-                Event = @event ?? throw new ArgumentNullException(nameof(@event))
+                LastName = lastName
             };
         }
+
+        public Guid Event_Id { get; set; }
 
         public string FirstName { get; private set; }
 
@@ -28,22 +30,10 @@ namespace Eventador.Domain
 
         public string DietaryRequirements { get; private set; }
 
-        public Event Event { get; private set; }
-
-        public ICollection<Session> Sessions { get; } = new List<Session>();
-
-        public ICollection<Accommodation> Accommodation { get; } = new List<Accommodation>();
-
         public void SpecifyDietaryRequirements(string dietaryRequirements)
         {
             HasDietaryRequirements = true;
             DietaryRequirements = dietaryRequirements;
-        }
-
-        public void Attend(Session session)
-        {
-            Sessions.Add(session);
-            session.Attendees.Add(this);
         }
     }
 }

@@ -15,9 +15,11 @@ namespace Eventador.Commands
 
         public async Task Handle(RegisterForEventCommand command)
         {
-            var @event = await _writeRepository.GetByIdAsync<Event>(command.EventId, x => x.Attendees);
+            var @event = await _writeRepository.GetByIdAsync<Event>(command.EventId);
 
-            @event.Register(command.FirstName, command.LastName);
+            var attendee = @event.Register(command.FirstName, command.LastName);
+
+            _writeRepository.Add(attendee);
 
             await _writeRepository.Commit();
         }
