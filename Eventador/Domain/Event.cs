@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Eventador
+namespace Eventador.Domain
 {
     public class Event : AggregateRoot
     {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Eventador
+namespace Eventador.Domain
 {
     [ComplexType]
     public class Money
