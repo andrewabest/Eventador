@@ -28,8 +28,6 @@ namespace Eventador.Domain
 
         public string DietaryRequirements { get; private set; }
 
-        // Are these guys hydrated? Are they not? Are you holding EF right?
-
         public Event Event { get; private set; }
 
         public ICollection<Session> Sessions { get; } = new List<Session>();

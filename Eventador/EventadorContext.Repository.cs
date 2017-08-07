@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Eventador.Domain;
 
 namespace Eventador
 {
@@ -82,12 +83,12 @@ namespace Eventador
             return result;
         }
 
-        public new void Add<T>(T aggregateRoot) where T : AggregateRoot
+        public void Add<T>(T aggregateRoot) where T : AggregateRoot
         {
             Set<T>().Add(aggregateRoot);
         }
 
-        public new void Remove<T>(T aggregateRoot) where T : class
+        public void Remove<T>(T aggregateRoot) where T : class
         {
             Set<T>().Remove(aggregateRoot);
         }

@@ -47,8 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accommodation.cs" />
-    <Compile Include="AggregateRoot.cs" />
+    <Compile Include="Domain\Accommodation.cs" />
+    <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Domain\Attendee.cs" />
     <Compile Include="Controllers\AttendeesController.cs" />
     <Compile Include="Controllers\EventController.cs" />

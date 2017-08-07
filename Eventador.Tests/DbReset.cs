@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 namespace Eventador.Tests
 {
-    [Ignore("Here be dragons")]
     public class DbReset
     {
         [Test]
@@ -20,23 +19,7 @@ namespace Eventador.Tests
                 connection.Open();
                 var sqlCommand = new SqlCommand(sqlCommandText, connection);
 
-                //GetDatabaseNames(connection);
-
                 sqlCommand.ExecuteNonQuery();
-            }
-        }
-
-        private static void GetDatabaseNames(SqlConnection connection)
-        {
-            var databases = connection.GetSchema("Databases");
-
-            //close connection
-            connection.Close();
-
-            //add to list
-            foreach (DataRow row in databases.Rows)
-            {
-                Console.WriteLine(row["database_name"]);
             }
         }
     }

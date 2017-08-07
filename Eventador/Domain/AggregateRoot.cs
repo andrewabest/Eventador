@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Eventador
+namespace Eventador.Domain
 {
     public interface IAggregateRoot
     {

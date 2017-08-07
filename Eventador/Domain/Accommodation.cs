@@ -1,7 +1,6 @@
 using System;
-using Eventador.Domain;
 
-namespace Eventador
+namespace Eventador.Domain
 {
     public class Accommodation : AggregateRoot
     {

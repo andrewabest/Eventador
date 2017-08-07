@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using Eventador.Domain;
 
 namespace Eventador.Repositories
 {
