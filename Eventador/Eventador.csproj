@@ -66,6 +66,7 @@
     <Compile Include="Domain\SessionAttendee.cs" />
     <Compile Include="EventadorContext.cs" />
     <Compile Include="EventadorContext.Repository.cs" />
+    <Compile Include="IAmTheQueryAssembly.cs" />
     <Compile Include="Migrations\201708070506248_InitialMigration.cs" />
     <Compile Include="Migrations\201708070506248_InitialMigration.Designer.cs">
       <DependentUpon>201708070506248_InitialMigration.cs</DependentUpon>
