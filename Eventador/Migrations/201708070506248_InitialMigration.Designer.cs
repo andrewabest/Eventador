@@ -13,7 +13,7 @@ namespace Eventador.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201708010038267_InitialMigration"; }
+            get { return "201708070506248_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

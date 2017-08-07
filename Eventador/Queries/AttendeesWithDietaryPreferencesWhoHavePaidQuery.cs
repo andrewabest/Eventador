@@ -25,22 +25,6 @@ namespace Eventador.Queries
                     await connection.QueryAsync<AttendeesWithDietaryPreferencesWhoHavePaidResult>(
                         GetSql())).ToArray();
             }
-
-            //return _connectionFactory.Table<Attendee>(
-            //        x => x.Sessions,
-            //        x => x.Accommodation)
-            //    .Where(x => x.HasDietaryRequirements)
-            //    .Where(x => x.Sessions.Any(session => session.IsCatered))
-            //    .Where(x => x.Accommodation.Any(acc => acc.Amount.Amount > 0))
-            //    .Select(x => new AttendeesWithDietaryPreferencesWhoHavePaidResult
-            //    {
-            //        Id = x.Id,
-            //        FirstName = x.FirstName,
-            //        LastName = x.LastName,
-            //        DietaryRequirements = x.DietaryRequirements
-            //    })
-            //    .ToArrayAsync();
-
         }
 
         public override string GetSql()

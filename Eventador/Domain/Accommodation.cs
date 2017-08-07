@@ -9,6 +9,8 @@ namespace Eventador.Domain
             Amount = Money.NullInstance;
         }
 
+        public Guid Attendee_ID { get; set; }
+
         public string Hotel { get; set; }
 
         public DateTimeOffset From { get; private set; }

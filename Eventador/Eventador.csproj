@@ -66,9 +66,9 @@
     <Compile Include="Domain\SessionAttendee.cs" />
     <Compile Include="EventadorContext.cs" />
     <Compile Include="EventadorContext.Repository.cs" />
-    <Compile Include="Migrations\201708010038267_InitialMigration.cs" />
-    <Compile Include="Migrations\201708010038267_InitialMigration.Designer.cs">
-      <DependentUpon>201708010038267_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201708070506248_InitialMigration.cs" />
+    <Compile Include="Migrations\201708070506248_InitialMigration.Designer.cs">
+      <DependentUpon>201708070506248_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Domain\Money.cs" />
@@ -87,10 +87,9 @@
     <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708010038267_InitialMigration.resx">
-      <DependentUpon>201708010038267_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708070506248_InitialMigration.resx">
+      <DependentUpon>201708070506248_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
